@@ -1,0 +1,272 @@
+"id","id_incidente","texto","categoria"
+"T001","INC-2026-0001","De: cert@certificado.exemplo.br
+Para: seguranca@universidade.exemplo.br (Joana Ribeiro Alves)
+Assunto: Servidor DNS recursivo aberto - risco de amplificacao DDoS
+
+Prezados, identificamos que o host srv-dns-02.universidade.exemplo.br
+(203.0.113.55, ASN 64512) responde a consultas DNS recursivas originadas de
+qualquer endereco na Internet. Essa configuracao permite que o servidor seja
+usado como amplificador em ataques de negacao de servico distribuida.
+
+Endereco IP      | ASN   | Porta | Status | Resultado
+203.0.113.55     | 64512 | 53    | Aberto | recursivo
+Contato tecnico: joana.alves@universidade.exemplo.br / +55 51 99999-0001
+Solicitamos restricao da recursao as redes internas em ate 72 horas.","CAT5"
+"T002","INC-2026-0002","Ticket aberto por Marcos Vinicius Prado (marcos.prado@instituto.exemplo.br)
+
+Nosso IDS registrou 4.812 tentativas de autenticacao SSH malsucedidas contra o
+host bastion.instituto.exemplo.br (198.51.100.17) nas ultimas 6 horas. As
+origens concentram-se em 192.0.2.44 e 192.0.2.91. Os usuarios tentados sao
+genericos (root, admin, oracle, postgres, ubuntu). Nao ha indicio de
+autenticacao bem sucedida ate o momento; o servico esta com PermitRootLogin no
+e o fail2ban esta ativo.
+
+Log (amostra):
+Feb 11 03:14:22 bastion sshd[2211]: Failed password for root from 192.0.2.44 port 51422 ssh2
+Feb 11 03:14:23 bastion sshd[2213]: Failed password for admin from 192.0.2.44 port 51430 ssh2","CAT12"
+"T003","INC-2026-0003","Notificacao automatica do PoP-XX
+
+Deteccao de ataque volumetrico contra o prefixo 203.0.113.0/24, alocado ao
+cliente Fundacao Aurora de Ensino. Pico observado de 42 Gbps as 14h07, com
+vetor predominante de amplificacao NTP (porta 123/UDP) e memcached
+(11211/UDP). O trafego saturou o enlace de borda e causou indisponibilidade
+parcial dos servicos web do cliente por aproximadamente 18 minutos.
+
+Mitigacao aplicada: anuncio de rota blackhole via comunidade BGP e filtro de
+origem no roteador de borda. Responsavel pelo acionamento: Carla Mendonca
+(carla.mendonca@pop-xx.exemplo.br).","CAT3"
+"T004","INC-2026-0004","Assunto: EDR detectou malware em estacao administrativa
+
+O agente de EDR instalado na estacao PATRIM-0442 (198.51.100.203), de uso da
+servidora Renata Coelho Farias, do setor de Patrimonio da Prefeitura de Vila
+Nova, sinalizou execucao de binario suspeito a partir de
+C:\Users\rcfarias\Downloads\NotaFiscal_4471.pdf.exe
+
+Hash SHA-256: 9f2c41ab77e3d5c018be44a1d6f0e29c3b8a75d4e1c6f39027ab8d5417ce3a02
+O binario tentou conexao de saida para 192.0.2.130:8443 e escreveu chave de
+persistencia em HKCU\Software\Microsoft\Windows\CurrentVersion\Run.
+A estacao foi isolada da rede. Aguardando orientacao para reimagem.","CAT2"
+"T005","INC-2026-0005","Relato de usuario encaminhado pelo suporte de primeiro nivel
+
+A professora Ana Beatriz Nogueira (ana.nogueira@universidade.exemplo.br)
+informa ter recebido mensagem que se apresentava como sendo da Reitoria,
+solicitando ""revalidacao urgente da senha institucional"" sob pena de bloqueio
+da conta em 24 horas. O link apontava para
+https://portal-institucional.exemplo-phishing.example/login, dominio registrado
+ha 3 dias. A pagina reproduzia a identidade visual do portal legitimo.
+
+A professora informa NAO ter inserido credenciais. Outros seis usuarios do
+mesmo departamento relataram a mesma mensagem. Remetente aparente:
+reitoria-avisos@exemplo-phishing.example","CAT7"
+"T006","INC-2026-0006","Suspeita de comprometimento de conta institucional
+
+A conta joao.pereira@instituto.exemplo.br apresentou autenticacoes bem
+sucedidas a partir de 192.0.2.212 (geolocalizacao fora do pais) as 02h41 e
+03h02, enquanto o titular, Joao Pereira dos Santos, registrava acesso presencial
+no campus no mesmo periodo. Foram criadas duas regras de encaminhamento
+automatico na caixa postal, ambas direcionando mensagens contendo as palavras
+""fatura"" e ""pagamento"" para um endereco externo.
+
+Acoes tomadas: senha redefinida, sessoes ativas revogadas, regras removidas e
+segundo fator obrigatorio habilitado.","CAT1"
+"T007","INC-2026-0007","Relatorio de varredura autenticada - OpenVAS
+
+Alvo: web-legado.instituto.exemplo.br (198.51.100.88)
+Responsavel tecnico: Fernando Tavares Lima (fernando.lima@instituto.exemplo.br)
+
+Vulnerabilidade: Apache Log4j2 Remote Code Execution (CVE-2021-44228)
+CVSS v3.1: 10.0 (Critical)
+CPE: cpe:/a:apache:log4j:2.14.1
+Evidencia: cabecalho X-Api-Version com payload JNDI resultou em consulta DNS
+para servidor controlado pelo scanner.
+
+Recomendacao: atualizar para 2.17.1 ou superior. O host expoe ainda a porta
+8080/TCP diretamente a Internet, sem proxy reverso.","CAT5"
+"T008","INC-2026-0008","Alteracao nao autorizada em configuracao de firewall
+
+Durante auditoria de configuracao, verificou-se que a regra de bloqueio da
+porta 3389/TCP (RDP) para a rede 203.0.113.0/24 foi removida do firewall de
+borda em 07/02, fora da janela de manutencao e sem registro de mudanca no
+sistema de tickets. O log de auditoria atribui a alteracao ao usuario
+adm-rede2, cuja credencial e compartilhada por tres tecnicos da equipe de
+infraestrutura, o que impede a atribuicao individual.
+
+Nao ha evidencia de exploracao no periodo. A regra foi restabelecida e o
+compartilhamento de credencial foi reportado a coordenacao.","CAT9"
+"T009","INC-2026-0009","Assunto: possivel exposicao de base de dados academicos
+
+Um pesquisador externo, Dr. Henrique Salles Vasconcelos, comunicou por e-mail
+(henrique.vasconcelos@parceiro.example) ter localizado um bucket de
+armazenamento de objetos com listagem publica contendo dumps do sistema
+academico. Os arquivos incluem nome completo, CPF, endereco e historico de
+notas de aproximadamente 12.400 estudantes.
+
+URL: https://storage.exemplo.br/backup-academico-2025/
+Primeiro registro de acesso externo no log: 29/01/2026.
+O bucket foi tornado privado imediatamente. A Encarregada de Dados foi
+notificada para avaliacao de comunicacao a ANPD e aos titulares.","CAT4"
+"T010","INC-2026-0010","Port scan detectado pelo honeypot da rede de pesquisa
+
+Origem: 192.0.2.77 (ASN 64500), com trafego correlato de 2001:db8:4f2::19
+Destino: 203.0.113.0/24
+Periodo: 12/02/2026 01:12 a 01:49 UTC-3
+
+Varredura sequencial TCP SYN cobrindo 1-1024 e portas selecionadas
+(1433, 3306, 3389, 5432, 5900, 8080, 8443, 27017). Padrao compativel com
+ferramenta automatizada de reconhecimento. Nao houve tentativa de exploracao
+subsequente registrada. Endereco ja consta em duas listas publicas de
+reputacao. Analista responsavel: Paulo Cesar Ribeiro.","CAT12"
+"T011","INC-2026-0011","Uso indevido de recursos computacionais
+
+O monitoramento do cluster de alto desempenho identificou que o no gpu-07
+(198.51.100.140) manteve utilizacao de GPU em 100% por 61 horas consecutivas
+sob a conta do usuario lcarvalho, sem job correspondente no escalonador Slurm.
+A analise de processos revelou o binario xmrig conectando-se a
+192.0.2.190:3333, caracteristico de mineracao de criptomoeda.
+
+Titular da conta: Lucas Carvalho Nunes, bolsista do laboratorio de
+computacao grafica. Processo encerrado, chave SSH revogada e caso encaminhado a
+coordenacao para apuracao.","CAT10"
+"T012","INC-2026-0012","Incidente em fornecedor de servico de e-mail marketing
+
+A empresa Comunica Digital Ltda., contratada para envio de comunicados
+institucionais, notificou incidente de seguranca em sua plataforma. Segundo a
+comunicacao assinada por Ricardo Bastos Pinheiro, gerente de seguranca da
+fornecedora, houve acesso nao autorizado a base de contatos entre 03 e 06 de
+fevereiro.
+
+Foram expostos nome e endereco de e-mail de listas de distribuicao de tres
+unidades. Nao havia dados sensiveis na plataforma. Solicitamos ao fornecedor o
+relatorio de causa raiz e evidencia de rotacao de credenciais de integracao.","CAT11"
+"T013","INC-2026-0013","Subject: Web application vulnerability report (external researcher)
+
+Hello, my name is Sarah Mitchell (sarah.mitchell@researcher.example). I found
+a SQL injection in the course registration system at
+https://matricula.universidade.exemplo.br/consulta?curso=
+
+The parameter ""curso"" is concatenated directly into the query. A payload of
+`1' UNION SELECT username, password_hash FROM usuarios--` returns 1.842 rows.
+Server responds from 203.0.113.90. I have not downloaded any data beyond the
+first page needed to confirm the issue.
+
+Please confirm receipt. I follow a 90-day coordinated disclosure policy.","CAT5"
+"T014","INC-2026-0014","Indisponibilidade do portal institucional - suspeita de DDoS aplicacional
+
+Entre 09h20 e 10h05 o portal www.universidade.exemplo.br apresentou tempo de
+resposta acima de 30 segundos e retorno intermitente de HTTP 503. O log do
+balanceador mostra 1,2 milhao de requisicoes GET para /busca?q= com strings
+aleatorias, originadas de aproximadamente 3.400 enderecos distintos, com
+User-Agent variado.
+
+Nao houve saturacao de banda (pico de 900 Mbps em enlace de 10 Gbps): o gargalo
+foi CPU no backend de busca. Mitigacao: limitacao de taxa por IP e cache
+agressivo do endpoint. Registrado por Tatiana Moraes Figueiredo.","CAT3"
+"T015","INC-2026-0015","Ransomware contido em servidor de arquivos departamental
+
+O servidor fs-quimica.universidade.exemplo.br (198.51.100.62) apresentou
+cifragem de aproximadamente 240 GB de arquivos com extensao .lkfz e nota de
+resgate em README_RESTORE.txt em cada diretorio. O vetor provavel foi uma
+sessao RDP exposta com credencial fraca da conta local ""suporte"".
+
+IOC observados:
+- 192.0.2.155 (conexoes RDP de origem, 04h12 a 05h30)
+- SHA-256 do binario: 41d0e2b9a7c65f3801ab29e7d5c4f68b0937ea52c1d84f6b73a09e5c2148db77
+O servidor foi desligado e a imagem forense preservada. Backups de 48h antes
+foram validados. Coordenacao: Bruno Sampaio Rocha.","CAT2"
+"T016","INC-2026-0016","Abuso interno - acesso indevido a prontuarios
+
+A auditoria do sistema de prontuario eletronico do Hospital Universitario
+registrou 87 consultas a registros de pacientes sem vinculo assistencial com o
+usuario tcastro, correspondente a tecnica administrativa Teresa Castro Amaral,
+entre 15/01 e 09/02. As consultas concentram-se em pacientes com sobrenome
+identico ao da servidora e em tres pessoas publicas.
+
+Nao ha indicio de exportacao ou impressao. O caso foi encaminhado a Comissao de
+Etica e a Encarregada de Dados. Acesso do usuario suspenso preventivamente.","CAT6"
+"T017","INC-2026-0017","Notificacao CERT.br - servico NTP com monlist habilitado
+
+Constatamos que o host 203.0.113.201, sob responsabilidade da sua organizacao,
+responde a comandos monlist (NTP modo 7), permitindo uso em ataques de
+amplificacao com fator superior a 200x.
+
+Data da coleta: 2026-02-08 11:34 UTC
+ASN: 64512
+Reverso: ntp-lab.universidade.exemplo.br
+
+Recomendamos atualizar o ntpd para versao 4.2.7p26 ou superior, ou desabilitar
+as consultas de modo 6 e 7 para clientes externos.","CAT5"
+"T018","INC-2026-0018","Tentativa de exploracao de Confluence detectada pelo WAF
+
+O WAF bloqueou 312 requisicoes contendo payload de template injection
+(OGNL) direcionadas a https://wiki.instituto.exemplo.br/, compativel com
+CVE-2023-22527. As origens sao 192.0.2.31, 192.0.2.32 e 198.51.100.250.
+
+Nenhuma requisicao chegou ao backend. A instancia esta na versao 8.5.5, ja
+corrigida para essa falha. Registramos o evento para acompanhamento de
+tendencia e comunicamos a equipe de aplicacoes, na pessoa de
+Gustavo Henrique Barreto (gustavo.barreto@instituto.exemplo.br).","CAT12"
+"T019","INC-2026-0019","Incidente fisico com impacto em ativos computacionais
+
+Rompimento de tubulacao no pavimento superior causou infiltracao na sala-cofre
+do Datacenter B durante a madrugada de 10/02. Dois racks foram atingidos, com
+perda de um switch de agregacao e de duas fontes redundantes do storage
+principal. Nao houve perda de dados: o espelhamento para o Datacenter A operou
+normalmente.
+
+Servicos afetados: autenticacao centralizada (23 minutos de degradacao) e
+sistema de biblioteca (1h40 indisponivel). Acionado pelo plantao:
+Sergio Antunes Vieira. Seguro patrimonial notificado.","CAT8"
+"T020","INC-2026-0020","Defacement em site departamental
+
+A pagina inicial de https://letras.universidade.exemplo.br/ foi substituida por
+conteudo de terceiros as 23h48 de 11/02. O CMS (WordPress 5.9.3) estava
+desatualizado e o plugin de formularios apresentava vulnerabilidade conhecida
+de upload arbitrario.
+
+Arquivo malicioso encontrado: /wp-content/uploads/2026/02/wp-conf.php
+(webshell), enviado a partir de 198.51.100.199. O site foi retirado do ar,
+restaurado a partir de backup de 10/02 e as atualizacoes foram aplicadas.
+Responsavel pelo site: Prof. Vitor Assis Meireles.","CAT9"
+"T021","INC-2026-0021","Fraude do falso superior - tentativa de transferencia
+
+A secretaria Luciana Prates Amorim recebeu mensagens em aplicativo de
+mensageria, a partir do numero +55 11 98888-0002, de alguem se identificando
+como o Pro-Reitor de Administracao e alegando estar em reuniao. A mensagem
+solicitava pagamento urgente de ""taxa de regularizacao"" no valor de
+R$ 27.400,00 para uma chave PIX de terceiro.
+
+A servidora estranhou a forma de contato, ligou para o ramal do Pro-Reitor e
+confirmou a fraude. Nenhum pagamento foi realizado. O caso foi comunicado a
+comunidade interna como alerta preventivo.","CAT7"
+"T022","INC-2026-0022","Exposicao de credenciais em repositorio publico
+
+Varredura automatizada identificou, no repositorio publico
+github.com/exemplo-org/sistema-protocolo, um arquivo config/database.yml com
+credenciais validas do banco de producao (usuario protocolo_app) e a chave de
+API do servico de assinatura digital.
+
+Commit responsavel: 7c1e9f2, autoria de Diego Almeida Fontoura, em 22/01/2026.
+O historico foi reescrito, o repositorio tornado privado e todas as credenciais
+rotacionadas. A analise de log do banco nao mostra conexoes de origem externa
+no periodo, mas a rotacao foi aplicada por precaucao.","CAT4"
+"T023","INC-2026-0023","DDoS por amplificacao DNS contra cliente do PoP
+
+Alvo: 203.0.113.140 (cliente Colegio Sao Bento)
+Vetor: respostas DNS ANY de resolvedores abertos, porta 53/UDP
+Pico: 11 Gbps / 1,9 Mpps, as 19h32 de 09/02
+Duracao: 26 minutos
+
+Foram observados 2.100 refletores distintos. A mitigacao usou filtro de taxa
+por porta de origem no roteador de borda, sem necessidade de blackhole. O
+cliente reportou lentidao, sem indisponibilidade total. Contato do cliente:
+ti@colegiosaobento.exemplo.br (Marta Lopes de Souza).","CAT3"
+"T024","INC-2026-0024","Assunto: atividade incomum no servidor de aplicacao
+
+Boa tarde. Notamos algo estranho no servidor app-03. O uso de memoria subiu
+muito ontem a noite e apareceram uns processos que ninguem reconhece. Um colega
+disse que pode ser coisa do sistema mesmo, mas achei melhor abrir o chamado.
+
+O servidor e o 198.51.100.71. Quem cuida dele normalmente e o Rafael, mas ele
+esta de ferias. Nao sei dizer se alguem mexeu na configuracao.
+
+Aberto por: Camila Ferraz Duarte (camila.duarte@instituto.exemplo.br)","CAT5"

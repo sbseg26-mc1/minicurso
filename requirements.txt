@@ -1,0 +1,24 @@
+# Material prático do minicurso SBSeg 2026 (MC1)
+#
+# Nada aqui é estritamente obrigatório: os notebooks rodam apenas com a
+# biblioteca padrão do Python 3.10+ e um kernel Jupyter. Cada dependência
+# abaixo habilita um caminho a mais, e o código detecta a ausência e degrada
+# com elegância.
+
+# --- ambiente de execução -------------------------------------------------
+jupyterlab>=4.0
+
+# --- tabelas e métricas (opcional) ---------------------------------------
+pandas>=2.0
+scikit-learn>=1.3
+
+# --- provedores de modelo remoto ou local (opcional) ---------------------
+# Necessário para PROVEDOR = "ollama" ou "openai". Sem ele, apenas o
+# provedor "simulado" fica disponível.
+requests>=2.31
+
+# --- NER por transformer no notebook 01 (opcional, ~500 MB) --------------
+# Sem estes pacotes, o notebook 01 usa um reconhecedor léxico simplificado.
+# A lição pedagógica da etapa de ablação continua observável.
+# transformers>=4.40
+# torch>=2.2
