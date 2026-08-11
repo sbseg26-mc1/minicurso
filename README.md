@@ -39,22 +39,84 @@ existir.
 
 ## Instalação
 
-Requer **Python 3.10+**. As dependências mínimas são as da biblioteca padrão;
-tudo o mais é opcional e o código degrada com elegância se faltar.
+Requer **Python 3.10 ou superior**. As dependências mínimas são as da
+biblioteca padrão; tudo o mais é opcional e o código degrada com elegância se
+faltar.
+
+### Passo 1: Python
+
+Confira se você já tem, com `python3 --version`. Se o comando não existir ou a
+versão for anterior à 3.10, instale:
+
+```bash
+# Ubuntu, Debian, Linux Mint
+sudo apt update && sudo apt install -y python3 python3-venv python3-pip git
+
+# Fedora
+sudo dnf install -y python3 python3-pip git
+
+# macOS (com Homebrew; instale-o em https://brew.sh se ainda não tiver)
+brew install python git
+
+# Windows (PowerShell)
+winget install --id Python.Python.3.12 -e
+winget install --id Git.Git -e
+```
+
+No Windows também funciona baixar o instalador em <https://python.org/downloads>.
+Marque **"Add python.exe to PATH"** na primeira tela; sem isso, o comando
+`python` não é encontrado no terminal.
+
+### Passo 2: o repositório e o ambiente virtual
+
+O ambiente virtual isola estas dependências das do resto da sua máquina, e
+permite apagar tudo depois removendo uma única pasta.
 
 ```bash
 git clone https://github.com/sbseg26-mc1/minicurso.git
 cd minicurso
-python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-jupyter lab            # ou: jupyter notebook
+
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 ```
 
-Instalação mínima, se você quiser apenas rodar tudo com o provedor `simulado`:
+O prompt do terminal passa a exibir `(.venv)`. Se ele não aparecer, o ambiente
+não foi ativado e os pacotes irão para a instalação global.
+
+### Passo 3: Jupyter e as demais dependências
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Se quiser apenas o essencial para rodar tudo com o provedor `simulado`, o
+Jupyter sozinho basta:
 
 ```bash
 pip install jupyterlab
 ```
+
+### Passo 4: abrir os notebooks
+
+```bash
+jupyter lab                        # ou: jupyter notebook
+```
+
+O comando abre o navegador em `http://localhost:8888`. Vá até `notebooks/` e
+comece pelo `01-anonimizacao.ipynb`: os três são encadeados e cada um consome a
+saída do anterior.
+
+Para encerrar, `Ctrl+C` no terminal e depois `deactivate` para sair do ambiente
+virtual.
+
+### Sem instalar nada
+
+Cada *notebook* também abre no [Google Colab](https://colab.research.google.com)
+pelo menu `Arquivo > Abrir notebook > GitHub`. Nesse caso, execute
+`!pip install -q jupyterlab` apenas se algum import falhar, e lembre-se de que o
+Colab envia o conteúdo executado para a infraestrutura do Google, o que é
+aceitável aqui porque todos os dados deste repositório são sintéticos.
 
 ### O que cada dependência opcional habilita
 
