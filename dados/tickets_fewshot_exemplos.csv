@@ -1,0 +1,36 @@
+"id","id_incidente","texto","categoria"
+"T025","INC-2026-0025","Relatorio de varredura de seguranca - servidor Memcached exposto
+
+Verificamos que o servidor cache-02.instituto.exemplo.br (198.51.100.230) expoe o servico Memcached (porta 11211/UDP) diretamente a Internet, sem autenticacao. Essa configuracao e classificada como vulnerabilidade critica, pois permite fator de amplificacao de ate 10.000x caso seja utilizada em ataques de negacao de servico distribuida contra terceiros.
+
+Nenhum trafego anomalo foi registrado ate o momento; trata-se de achado preventivo de varredura de rotina. Recomenda-se desabilitar o acesso externo ao servico imediatamente.","CAT5"
+"T026","INC-2026-0026","Indisponibilidade do sistema de matricula online
+
+Entre 14h10 e 15h32, o sistema de matricula online ficou completamente inacessivel. O monitoramento registrou pico de 8,4 Gbps de trafego UDP recebido na borda, com origem distribuida em mais de 3.000 enderecos IP distintos, caracteristico de ataque de amplificacao. O enlace de 10 Gbps saturou, impedindo o acesso de usuarios legitimos.
+
+Mitigacao aplicada via scrubbing center do provedor de transito. Nenhuma vulnerabilidade interna foi identificada como causa; o ataque partiu de infraestrutura de terceiros.","CAT3"
+"T027","INC-2026-0027","Vazamento de dados de alunos identificado por pesquisador externo
+
+Um pesquisador de seguranca independente notificou, via e-mail, que a API publica do sistema academico retorna dados completos de matricula (nome, CPF, endereco) ao consultar qualquer numero de matricula sequencial, sem exigir autenticacao. O pesquisador testou com 15 numeros e confirmou o padrao, sem realizar coleta em massa.
+
+A API foi desativada imediatamente apos a notificacao. Estima-se exposicao potencial de aproximadamente 22.000 registros.","CAT4"
+"T028","INC-2026-0028","Acesso indevido de servidor a processos administrativos de colegas
+
+A auditoria trimestral do sistema de RH identificou que o servidor Ricardo Almeida Duarte, do setor de compras, acessou 34 vezes os processos administrativos e historico salarial de colegas de outros setores, sem qualquer justificativa funcional para tais consultas.
+
+Nao ha indicio de que os dados tenham sido copiados, impressos ou compartilhados externamente. O acesso foi revogado e o caso encaminhado a Corregedoria.","CAT6"
+"T029","INC-2026-0029","Alteracao nao autorizada em politica de backup
+
+Verificou-se que a politica de retencao de backups do servidor de banco de dados financeiro foi alterada de 90 para 7 dias, reduzindo drasticamente a janela de recuperacao em caso de incidente. A mudanca foi aplicada pela conta de servico 'svc-backup', sem ticket de mudanca correspondente e fora do horario de manutencao programada.
+
+Nao ha evidencia de tentativa de acesso nao autorizado ao servidor; a alteracao parece ter sido feita por engano ou por script mal configurado.","CAT9"
+"T030","INC-2026-0030","Tentativas de exploracao bloqueadas pelo WAF
+
+O firewall de aplicacao web registrou 58 tentativas de exploracao de uma vulnerabilidade de path traversal conhecida (CVE publico) contra o portal de agendamento online, partindo do endereco 192.0.2.203. Todas as requisicoes foram bloqueadas pelo WAF antes de atingir a aplicacao.
+
+Nao houve alteracao de arquivos, dados ou configuracoes no servidor. Endereco adicionado a lista de bloqueio permanente.","CAT12"
+"T031","INC-2026-0031","Configuracao indevida expoe backups de sistema academico em nuvem
+
+Durante manutencao de rotina, um administrador de TI reconfigurou as permissoes de um bucket de armazenamento em nuvem utilizado para backups do sistema academico, deixando-o acessivel publicamente por engano. A falha permaneceu ativa por 6 dias antes de ser identificada por uma ferramenta automatizada de varredura de configuracoes em nuvem, mantida por um parceiro de seguranca do consorcio de universidades.
+
+Os backups continham registros academicos de aproximadamente 8.000 estudantes. Nao ha evidencia de que o administrador tenha agido de ma-fe; tratou-se de erro de configuracao durante a manutencao. O bucket foi tornado privado imediatamente apos a notificacao, e a Encarregada de Dados foi acionada para avaliar comunicacao aos titulares.","CAT4"
