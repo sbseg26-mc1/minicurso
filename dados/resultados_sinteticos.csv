@@ -1,0 +1,21 @@
+id,id_incidente,esperado,rotulo_livre,zero_shot,one_shot
+T001,INC-2026-0001,CAT5,Configuração de rede insegura,CAT12,CAT5
+T002,INC-2026-0002,CAT12,Ataque de força bruta,CAT12,CAT12
+T003,INC-2026-0003,CAT3,Ataque de Negação de Serviço,CAT3,CAT3
+T004,INC-2026-0004,CAT2,Infecção por Malware,CAT2,CAT2
+T005,INC-2026-0005,CAT7,Tentativa de Phishing,CAT7,CAT7
+T006,INC-2026-0006,CAT1,Comprometimento de conta,CAT1,CAT1
+T007,INC-2026-0007,CAT5,Vulnerabilidade Crítica de Execução,CAT5,CAT5
+T008,INC-2026-0008,CAT9,Violação de controle interno,CAT9,CAT9
+T009,INC-2026-0009,CAT4,Vazamento de dados sensíveis,CAT4,CAT4
+T011,INC-2026-0011,CAT10,Mineração de criptomoedas,CAT10,CAT10
+T012,INC-2026-0012,CAT11,Vazamento de dados,CAT11,CAT11
+T013,INC-2026-0013,CAT5,Vulnerabilidade de aplicação web,CAT5,CAT5
+T014,INC-2026-0014,CAT3,Ataque de Negação de Serviço,CAT3,CAT3
+T015,INC-2026-0015,CAT2,Incidente de Ransomware,CAT2,CAT2
+T016,INC-2026-0016,CAT6,Acesso indevido a dados,CAT6,CAT6
+T018,INC-2026-0018,CAT12,Tentativa de Exploração,CAT12,CAT12
+T019,INC-2026-0019,CAT8,Incidente de infraestrutura física,CAT8,CAT8
+T020,INC-2026-0020,CAT9,Comprometimento de aplicação web,CAT9,CAT9
+T021,INC-2026-0021,CAT7,Engenharia Social (Phishing),CAT7,CAT7
+T024,INC-2026-0024,CAT5,Comprometimento de Ativo,CAT2,CAT2

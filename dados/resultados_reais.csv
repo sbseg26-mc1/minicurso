@@ -1,0 +1,175 @@
+registro_id,incidente_id,esperado,rotulo_livre,zero_shot,one_shot
+0,INC2022-125941,CAT12,Tentativa de Brute Force,CAT12,CAT12
+1,INC2022-126521,CAT12,Tentativa de acesso indevido,CAT12,CAT12
+2,INC2022-127135,CAT5,Configuração Insegura de Serviço,CAT5,CAT5
+3,INC2022-138345,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT5
+4,INC2022-140134,CAT5,Vulnerabilidade de Reflexão,CAT5,CAT5
+5,INC2022-140240,CAT12,Comprometimento de Ativo (Botnet),CAT1,CAT5
+6,INC2022-144752,CAT5,Exposição de serviço vulnerável,CAT5,CAT5
+7,INC2022-145040,CAT5,Vulnerabilidade de Reflexão,CAT5,CAT5
+8,INC2023-003785,CAT5,Vulnerabilidade de Reflexão/Amplificação,CAT5,CAT5
+9,INC2023-017112,CAT5,Exposição de serviço vulnerável,CAT12,CAT5
+10,INC2023-021009,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+11,INC2023-024598,CAT5,Vulnerabilidade de infraestrutura exposta,CAT5,CAT5
+12,INC2023-026754,CAT5,Vulnerabilidade de serviço exposto,CAT5,CAT5
+13,INC2023-027278,CAT5,Vulnerabilidade de Reflexão,CAT12,CAT5
+14,INC2023-027279,CAT5,Vulnerabilidade de Reflexão,CAT12,CAT5
+15,INC2023-032613,CAT3,Comprometimento de Ativo,CAT5,CAT5
+16,INC2023-032614,CAT12,Varredura de rede,CAT5,CAT12
+17,INC2023-033577,CAT5,Vulnerabilidade de amplificação NTP,CAT5,CAT5
+18,INC2023-035005,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+19,INC2023-038886,CAT5,Exposição de serviço vulnerável,CAT5,CAT5
+20,INC2023-039374,CAT5,Vulnerabilidade de Reflexão,CAT12,CAT5
+21,INC2023-040569,CAT5,Vulnerabilidade Crítica Exposta,CAT5,CAT5
+22,INC2023-040698,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+23,INC2023-040699,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+24,INC2023-040700,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+25,INC2023-044557,CAT5,Vulnerabilidade de Reflexão,CAT5,CAT5
+27,INC2023-046541,CAT1,Conta de e-mail comprometida,CAT1,CAT1
+28,INC2023-049266,CAT2,Infecção por Backdoor,CAT2,CAT2
+29,INC2023-056442,CAT5,Configuração Insegura de Rede,CAT5,CAT5
+30,INC2023-056851,CAT2,Comprometimento por Backdoor,CAT2,CAT2
+31,INC2023-062847,CAT3,Abuso de infraestrutura,CAT3,CAT3
+32,INC2023-072050,CAT5,Configuração Insegura de Rede,CAT5,CAT12
+33,INC2023-075081,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+34,INC2023-075082,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+35,INC2023-075083,CAT5,Vulnerabilidade de Software Exposta,CAT5,CAT5
+36,INC2023-119920,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+37,INC2023-119923,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+39,INC2023-128523,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+40,INC2024-000940,CAT5,Vulnerabilidade de exposição,CAT12,CAT5
+41,INC2024-001493,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+42,INC2024-006474,CAT5,Vulnerabilidade de software exposta,CAT5,CAT5
+43,INC2024-021200,CAT5,Exposição de serviço vulnerável,CAT5,CAT5
+44,INC2024-023621,CAT5,Vulnerabilidade de Exposição,CAT5,CAT5
+45,INC2024-029116,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+46,INC2024-029117,CAT5,Vulnerabilidade de software exposta,CAT5,CAT5
+47,INC2024-029119,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+48,INC2024-029122,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+49,INC2024-031572,CAT5,Exposição de serviço de infraestrutura,CAT5,CAT5
+50,INC2024-038029,CAT5,Exposição de serviço vulnerável,CAT12,CAT5
+51,INC2024-043142,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT5
+52,INC2024-049905,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT12
+53,INC2024-054399,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+54,INC2024-071998,CAT5,Configuração Insegura de Serviço,CAT5,CAT5
+55,INC2021-029717,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+56,INC2021-056045,CAT9,Defacement de website,CAT9,CAT9
+57,INC2021-056047,CAT9,Defacement de website,CAT9,CAT9
+58,INC2021-089940,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+59,INC2022-023007,CAT3,Infecção por Botnet,CAT3,CAT3
+60,INC2022-023918,CAT12,Ataque de Força Bruta,CAT12,CAT12
+61,INC2022-026800,CAT12,Tentativa de acesso não autorizado,CAT12,CAT12
+62,INC2022-026801,CAT12,Tentativa de Brute Force,CAT12,CAT12
+63,INC2022-026802,CAT12,Tentativa de Brute Force,CAT12,CAT12
+64,INC2022-026803,CAT12,Tentativa de Brute Force,CAT12,CAT12
+65,INC2022-026817,CAT12,Ataque de força bruta,CAT12,CAT12
+66,INC2022-026818,CAT12,Tentativa de força bruta,CAT12,CAT12
+67,INC2022-026825,CAT12,Ataque de força bruta,CAT12,CAT12
+68,INC2022-031358,CAT5,Vulnerabilidade de Infraestrutura,CAT3,CAT5
+69,INC2022-031359,CAT5,Vulnerabilidade de amplificação NTP,CAT12,CAT5
+70,INC2022-032381,CAT5,Exposição de Serviço Vulnerável,CAT12,CAT5
+71,INC2022-037776,CAT5,Vulnerabilidade de Amplificação,CAT12,CAT5
+72,INC2022-037777,CAT5,Vulnerabilidade de Amplificação,CAT12,CAT5
+73,INC2022-041416,CAT12,Abuso de envio de spam,CAT12,CAT12
+74,INC2022-042044,CAT12,Abuso de correio eletrônico,CAT12,CAT12
+75,INC2022-042745,CAT12,Envio de Spam,CAT12,CAT12
+76,INC2022-042747,CAT12,Envio de Spam,CAT12,CAT12
+77,INC2022-083997,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+78,INC2022-085230,CAT5,Vulnerabilidade de serviço exposto,CAT5,CAT5
+79,INC2022-100003,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+80,INC2022-103272,CAT12,Tentativa de Brute Force,CAT12,CAT12
+81,INC2022-107371,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+82,INC2022-107571,CAT3,Abuso de Botnet,CAT3,CAT3
+83,INC2022-108489,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT5
+84,INC2022-120804,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+85,INC2022-123618,CAT12,Tentativa de acesso não autorizado,CAT12,CAT12
+86,INC2022-104330,CAT9,Defacement de website,CAT9,CAT9
+87,INC2021-014254,CAT5,Atividade de Scanner malicioso,CAT5,CAT12
+88,INC2021-014262,CAT7,Abuso de infraestrutura,CAT7,CAT7
+89,INC2021-014273,CAT5,Host Comprometido / Botnet,CAT12,CAT2
+91,INC2021-014310,CAT12,Abuso de rede,CAT2,CAT2
+92,INC2021-014311,CAT9,Envio de Spam/Phishing,CAT7,CAT7
+93,INC2021-039405,CAT5,Vulnerabilidade Crítica de Software,CAT5,CAT5
+95,INC2021-056046,CAT9,Desfiguração de website,CAT9,CAT9
+97,INC2021-057597,CAT9,Defacement de Website,CAT9,CAT9
+98,INC2022-023008,CAT3,Infecção por Botnet,CAT3,CAT3
+99,INC2022-023506,CAT5,Vulnerabilidade de Configuração,CAT5,CAT5
+100,INC2022-023955,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+101,INC2022-024988,CAT5,Infecção por Botnet,CAT3,CAT3
+103,INC2022-025787,CAT12,Tentativa de acesso indevido,CAT12,CAT12
+104,INC2022-026208,CAT12,Tentativa de Brute Force,CAT12,CAT12
+105,INC2022-026209,CAT12,Tentativa de Brute Force,CAT12,CAT12
+106,INC2022-026697,CAT5,Vulnerabilidade de exposição,CAT5,CAT5
+107,INC2022-035887,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+108,INC2022-041417,CAT12,Abuso de rede/spam,CAT12,CAT12
+109,INC2022-043526,CAT5,Vulnerabilidade de serviço exposto,CAT12,CAT5
+110,INC2022-044974,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+111,INC2022-045328,CAT2,Envio de Spam,CAT12,CAT12
+112,INC2022-053173,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT12
+113,INC2022-055443,CAT3,Comprometimento de Dispositivo Botnet,CAT3,CAT3
+114,INC2022-089514,CAT5,Vulnerabilidade de Amplificação DDoS,CAT12,CAT5
+115,INC2022-089517,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+116,INC2022-095709,CAT7,Defacement de website,CAT9,CAT9
+117,INC2022-096282,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+118,INC2022-097218,CAT5,Exposição de serviço vulnerável,CAT12,CAT5
+120,INC2022-106330,CAT3,Infecção por Botnet,CAT3,CAT3
+122,INC2022-107139,CAT3,Ataque de Botnet,CAT3,CAT3
+123,INC2022-107566,CAT3,Ataque de Botnet,CAT3,CAT3
+124,INC2022-108283,CAT3,Participação em Botnet,CAT3,CAT3
+125,INC2022-108583,CAT12,Ataque de força bruta,CAT12,CAT12
+126,INC2022-111244,CAT3,Participação em Botnet,CAT3,CAT3
+127,INC2022-111527,CAT3,Infecção por Botnet,CAT3,CAT3
+128,INC2022-111528,CAT3,Participação em Botnet,CAT3,CAT3
+129,INC2022-112331,CAT3,Ataque de Botnet,CAT3,CAT3
+130,INC2022-112823,CAT3,Participação em Botnet,CAT3,CAT3
+131,INC2022-122349,CAT5,Vulnerabilidade de Reflexão,CAT5,CAT5
+132,INC2023-001278,CAT5,Vulnerabilidade de Infraestrutura,CAT3,CAT5
+133,INC2023-004547,CAT5,Vulnerabilidade de serviço exposto,CAT5,CAT5
+134,INC2023-012205,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+135,INC2023-013407,CAT3,Ataque de Botnet (DDoS),CAT3,CAT3
+136,INC2023-014056,CAT5,Aviso de Vulnerabilidade,CAT12,CAT5
+137,INC2023-014057,CAT5,Alerta de vulnerabilidade,CAT5,CAT5
+138,INC2023-014128,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+139,INC2023-015784,CAT5,Vulnerabilidade de serviço exposto,CAT12,CAT5
+140,INC2023-016791,CAT12,Atividade de Botnet,CAT5,CAT5
+141,INC2023-029291,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+142,INC2023-029292,CAT5,Vulnerabilidade de software exposta,CAT5,CAT5
+143,INC2023-029293,CAT5,Exposição de vulnerabilidade crítica,CAT12,CAT5
+144,INC2023-029294,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+145,INC2023-036554,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+146,INC2023-044249,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+147,INC2023-046106,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+148,INC2023-055023,CAT5,Vulnerabilidade de Amplificação,CAT5,CAT12
+149,INC2023-059033,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT5
+150,INC2023-068504,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT5
+151,INC2023-069671,CAT5,Exposição de serviço,CAT12,CAT5
+152,INC2023-071011,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT5
+153,INC2023-076400,CAT12,Ataque de Força Bruta,CAT12,CAT12
+154,INC2023-076401,CAT12,Ataque de força bruta,CAT12,CAT12
+155,INC2023-077411,CAT12,Tentativa de acesso não autorizado,CAT12,CAT12
+156,INC2023-080346,CAT5,Vulnerabilidade de Amplificação,CAT12,CAT5
+157,INC2023-081191,CAT5,Exposição de serviço vulnerável,CAT5,CAT5
+158,INC2023-082920,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+159,INC2023-086309,CAT5,Vulnerabilidade de software exposta,CAT12,CAT5
+160,INC2023-086310,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+161,INC2023-116124,CAT5,Vulnerabilidade de infraestrutura exposta,CAT5,CAT5
+162,INC2023-123500,CAT7,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+163,INC2023-124983,CAT5,Exposição de serviço vulnerável,CAT5,CAT5
+164,INC2023-127753,CAT5,Vulnerabilidade de infraestrutura,CAT5,CAT5
+165,INC2024-003785,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+166,INC2024-004860,CAT5,Vulnerabilidade de Infraestrutura,CAT12,CAT12
+167,INC2024-019317,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+168,INC2024-028538,CAT5,Vulnerabilidade de infraestrutura,CAT12,CAT12
+169,INC2024-033701,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT12
+170,INC2024-044532,CAT5,Exposição de Vulnerabilidade Crítica,CAT5,CAT5
+171,INC2024-044535,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+172,INC2024-046945,CAT5,Alerta de Vulnerabilidade,CAT12,CAT5
+173,INC2024-058734,CAT5,Vulnerabilidade de Software,CAT5,CAT5
+174,INC2024-058735,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+175,INC2024-075680,CAT5,Exposição de serviço crítico,CAT12,CAT5
+176,INC2024-076844,CAT5,Vulnerabilidade de Software,CAT12,CAT5
+177,INC2024-084127,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+178,INC2024-101169,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+179,INC2024-103100,CAT5,Vulnerabilidade Crítica Exposta,CAT5,CAT5
+180,INC2024-103102,CAT5,Vulnerabilidade de Infraestrutura,CAT5,CAT5
+181,INC2021-003618,CAT5,Atividade de varredura maliciosa,CAT5,CAT5
