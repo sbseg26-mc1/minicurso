@@ -9,13 +9,27 @@ explica o *porquê*; este repositório mostra o *como*, de forma executável.
 | Notebook | Estudo de caso | Duração | Entrada | Saída |
 |---|---|---|---|---|
 | [`01-anonimizacao.ipynb`](notebooks/01-anonimizacao.ipynb) | EC1: anonimização de *tickets* | ~15 min | `dados/tickets_sinteticos.csv` | `saida/tickets_pseudonimizados.csv` |
-| [`02-classificacao.ipynb`](notebooks/02-classificacao.ipynb) | EC2: classificação de incidentes | ~15 min | saída do NB1 | `saida/incidentes_classificados.csv` |
+| [`02-classificacao.ipynb`](notebooks/02-classificacao.ipynb) | EC2: classificação de incidentes | ~15 min | `tickets_sinteticos.csv`, mais uma chave de API | `saida/tickets_classificados.csv` |
+| [`02-classificacao_offline.ipynb`](notebooks/02-classificacao_offline.ipynb) | EC2 sem rede, resultados embutidos | ~10 min | `tickets_sinteticos.csv` | métricas e gráficos na tela |
+| [`02-resultados_classificacao_tickets_reais.ipynb`](notebooks/02-resultados_classificacao_tickets_reais.ipynb) | EC2 sobre a base real | ~5 min | `dados/resultados_reais.csv` | métricas e gráficos na tela |
 | [`03-playbooks.ipynb`](notebooks/03-playbooks.ipynb) | EC3: geração de *playbooks* | ~12 min | saída do NB2 | `saida/playbooks/` |
 
-Os três formam um **encadeamento**: a saída de um é a entrada do seguinte, o que
-reproduz o ciclo ANON-LFI → AutoClass-LFI → Módulo PoP descrito no capítulo.
-Cada um também roda isolado, porque regenera a entrada faltante se ela não
-existir.
+O 02 e o 03 formam um **encadeamento**: a saída do primeiro é a entrada do
+segundo, o que reproduz o trecho AutoClass-LFI → Módulo PoP do ciclo descrito no
+capítulo. O 01 demonstra a etapa que, em produção, antecede os dois, e aqui ele
+opera sobre os mesmos *tickets* sintéticos, e não sobre a base real.
+
+Cada *notebook* também roda isolado. O 03 procura os *tickets* classificados em
+`saida/`, tanto na raiz quanto em `notebooks/`, e recorre à cópia pré-computada
+em `dados/tickets_classificados.csv` quando você ainda não executou o 02.
+
+Dois *notebooks* cobrem o mesmo Estudo de Caso 2 e chegam aos mesmos números.
+Use o `02-classificacao.ipynb` se tiver chave de API e quiser ver cada
+classificação acontecendo; use o `02-classificacao_offline.ipynb` se não tiver
+rede, chave ou cota. O terceiro, o de resultados reais, é só de leitura: ele
+mostra o desempenho sobre os 182 incidentes reais a partir de um CSV que contém
+apenas identificadores e categorias, sem texto de *ticket* algum, e por isso pode
+ser compartilhado livremente.
 
 ## Três compromissos de projeto
 
@@ -25,10 +39,12 @@ existir.
    comportamento observado na demonstração das ferramentas se torne
    inspecionável. Não substituem as ferramentas de produção: os repositórios
    delas estão listados no fim deste arquivo.
-2. **Executam sem GPU, sem rede e sem credenciais.** Onde há uma chamada a
-   modelo de linguagem, existe um provedor `simulado`, determinístico e local,
-   que permite completar a atividade inteira offline. Provedores reais (Ollama
-   local e APIs compatíveis com OpenAI) são plugáveis trocando uma variável.
+2. **Há sempre um caminho sem GPU, sem rede e sem credenciais.** O 01 é Python
+   puro. O 02 tem duas versões equivalentes, uma que chama a API do Gemini e
+   outra com os resultados de uma execução real embutidos, que dispensa rede. O
+   03 traz um provedor `simulado`, determinístico e local, com os provedores
+   reais (Ollama local e APIs compatíveis com OpenAI) plugáveis por uma
+   variável. Nenhuma etapa exige GPU.
 3. **Sem dado real.** Os `dados/tickets_sinteticos.csv` foram escritos para o
    minicurso. Nomes, e-mails, organizações e domínios são fictícios, e os
    endereços IP vêm exclusivamente das faixas de documentação reservadas pela
@@ -90,11 +106,11 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Se quiser apenas o essencial para rodar tudo com o provedor `simulado`, o
-Jupyter sozinho basta:
+Se quiser apenas o essencial, o Jupyter com `pandas` e `matplotlib` cobre os
+caminhos que não usam rede:
 
 ```bash
-pip install jupyterlab
+pip install jupyterlab pandas matplotlib
 ```
 
 ### Passo 4: abrir os notebooks
@@ -123,13 +139,29 @@ aceitável aqui porque todos os dados deste repositório são sintéticos.
 | Pacote | Habilita | Se faltar |
 |---|---|---|
 | `transformers`, `torch` | NER por *transformer* no NB1 (etapa 3) | cai para um reconhecedor léxico simplificado; a lição de cobertura permanece observável |
-| `pandas` | tabelas formatadas | as saídas viram listas de dicionários impressas |
-| `scikit-learn` | relatório de classificação do NB2 | usa a implementação em Python puro que acompanha o *notebook* |
-| `requests` | provedores `ollama` e `openai` | apenas o provedor `simulado` fica disponível |
+| `pandas` | tabelas formatadas, em todos os *notebooks* | as saídas viram listas de dicionários impressas |
+| `matplotlib` | gráficos de acurácia e matriz de confusão nos *notebooks* do EC2 | os mesmos números continuam saindo em texto |
+| `google-genai` | chamada à API do Gemini no `02-classificacao.ipynb` | use o `02-classificacao_offline.ipynb` |
+| `requests` | provedores `ollama` e `openai` no NB3 | apenas o provedor `simulado` fica disponível |
 
-## Escolhendo o provedor de modelo (NB2 e NB3)
+## Modelos: a chave do EC2 e o provedor do EC3
 
-No alto de cada *notebook* há uma única célula de configuração:
+O `02-classificacao.ipynb` chama a API do Gemini, no modelo
+`gemini-3.1-flash-lite`, que é o mesmo que produziu os resultados publicados no
+capítulo. Registramos o identificador exato de propósito: provedores comerciais
+atualizam *endpoints* sem aviso, e reproduzir os números depende dessa
+informação. Gere uma chave gratuita no
+[Google AI Studio](https://aistudio.google.com/) e exporte-a antes de abrir o
+Jupyter:
+
+```bash
+export API_KEY="sua-chave"          # Windows PowerShell: $env:API_KEY="sua-chave"
+```
+
+Sem chave, sem rede ou sem cota, use o `02-classificacao_offline.ipynb`: ele
+percorre a mesma sequência de experimentos e chega aos mesmos números.
+
+O `03-playbooks.ipynb` tem uma única célula de configuração no alto:
 
 ```python
 PROVEDOR = "simulado"     # "simulado" | "ollama" | "openai"
@@ -155,13 +187,21 @@ MODELO   = "qwen3:14b"    # usado por "ollama" e "openai"
 ```
 dados/
   tickets_sinteticos.csv     24 tickets sintéticos rotulados (12 categorias NIST)
+  ticket_injecao.csv         1 ticket com instrução injetada no corpo do relato,
+                             para o exercício de injeção de prompt (seção 6.5
+                             do NB2)
+  tickets_classificados.csv  saída pré-computada do NB2, para que o NB3 rode
+                             isolado
+  resultados_sinteticos.csv  resultados das três estratégias sobre os sintéticos
+  resultados_reais.csv       resultados sobre os 182 incidentes reais, só com
+                             identificadores e categorias, sem texto de ticket
   pops/                      5 procedimentos operacionais padrão, base de
                              recuperação do NB3
 prompts/
   ec2-classificacao.md       prompts de classificação (livre, taxonomia,
                              one-shot, PHP)
   ec3-playbook.md            prompt de geração de playbook com restrições
-notebooks/                   os três notebooks
+notebooks/                   os cinco notebooks
 saida/                       criado na execução; não versionado
 ```
 
